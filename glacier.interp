@@ -36,7 +36,7 @@ null
 'sq'
 'Tensor'
 'forall'
-'refType'
+'refgtype'
 'IntType'
 'UIntType'
 'FloatType'
@@ -141,13 +141,13 @@ definition
 expr
 binOp
 unaryOp
-type
-baseType
+gtype
+basegtype
 shape
 kind
 globalId
 localId
-typeId
+gtypeId
 realNumber
 
 

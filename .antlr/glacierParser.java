@@ -28,13 +28,13 @@ public class glacierParser extends Parser {
 		Number=65;
 	public static final int
 		RULE_item = 0, RULE_operator = 1, RULE_definition = 2, RULE_expr = 3, 
-		RULE_binOp = 4, RULE_unaryOp = 5, RULE_type = 6, RULE_baseType = 7, RULE_shape = 8, 
-		RULE_kind = 9, RULE_globalId = 10, RULE_localId = 11, RULE_typeId = 12, 
-		RULE_realNumber = 13;
+		RULE_binOp = 4, RULE_unaryOp = 5, RULE_gtype = 6, RULE_basegtype = 7, 
+		RULE_shape = 8, RULE_kind = 9, RULE_globalId = 10, RULE_localId = 11, 
+		RULE_gtypeId = 12, RULE_realNumber = 13;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"item", "operator", "definition", "expr", "binOp", "unaryOp", "type", 
-			"baseType", "shape", "kind", "globalId", "localId", "typeId", "realNumber"
+			"item", "operator", "definition", "expr", "binOp", "unaryOp", "gtype", 
+			"basegtype", "shape", "kind", "globalId", "localId", "gtypeId", "realNumber"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -45,7 +45,7 @@ public class glacierParser extends Parser {
 			"'True'", "'False'", "','", "'let'", "'='", "'in'", "'['", "']'", "'if'", 
 			"'then'", "'else'", "'Zero'", "'Grad'", "'Ref'", "'!'", "':='", "'+'", 
 			"'-'", "'*'", "'/'", "'!='", "'<'", "'<='", "'>'", "'>='", "'sq'", "'Tensor'", 
-			"'forall'", "'refType'", "'IntType'", "'UIntType'", "'FloatType'", "'BoolType'", 
+			"'forall'", "'refgtype'", "'IntType'", "'UIntType'", "'FloatType'", "'BoolType'", 
 			"'Shape'", "'BaseType'", "'Type'", "'@'", "'%'", "'0'", "'1'", "'2'", 
 			"'3'", "'4'", "'5'", "'6'", "'7'", "'8'", "'9'"
 		};
@@ -166,8 +166,8 @@ public class glacierParser extends Parser {
 		public GlobalIdContext globalId() {
 			return getRuleContext(GlobalIdContext.class,0);
 		}
-		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+		public GtypeContext gtype() {
+			return getRuleContext(GtypeContext.class,0);
 		}
 		public OperatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -188,7 +188,7 @@ public class glacierParser extends Parser {
 			setState(34);
 			match(T__1);
 			setState(35);
-			type(0);
+			gtype(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -206,11 +206,11 @@ public class glacierParser extends Parser {
 		public GlobalIdContext globalId() {
 			return getRuleContext(GlobalIdContext.class,0);
 		}
-		public List<TypeContext> type() {
-			return getRuleContexts(TypeContext.class);
+		public List<GtypeContext> gtype() {
+			return getRuleContexts(GtypeContext.class);
 		}
-		public TypeContext type(int i) {
-			return getRuleContext(TypeContext.class,i);
+		public GtypeContext gtype(int i) {
+			return getRuleContext(GtypeContext.class,i);
 		}
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
@@ -251,7 +251,7 @@ public class glacierParser extends Parser {
 				setState(41);
 				match(T__1);
 				setState(42);
-				type(0);
+				gtype(0);
 				setState(43);
 				match(T__4);
 				}
@@ -263,7 +263,7 @@ public class glacierParser extends Parser {
 			setState(50);
 			match(T__5);
 			setState(51);
-			type(0);
+			gtype(0);
 			setState(52);
 			match(T__6);
 			setState(53);
@@ -296,8 +296,8 @@ public class glacierParser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+		public GtypeContext gtype() {
+			return getRuleContext(GtypeContext.class,0);
 		}
 		public UnaryOpContext unaryOp() {
 			return getRuleContext(UnaryOpContext.class,0);
@@ -369,7 +369,7 @@ public class glacierParser extends Parser {
 					setState(63);
 					match(T__1);
 					setState(64);
-					type(0);
+					gtype(0);
 					}
 				}
 
@@ -396,7 +396,7 @@ public class glacierParser extends Parser {
 				setState(73);
 				match(T__3);
 				setState(74);
-				type(0);
+				gtype(0);
 				setState(75);
 				match(T__4);
 				setState(76);
@@ -492,7 +492,7 @@ public class glacierParser extends Parser {
 				setState(111);
 				match(T__19);
 				setState(112);
-				type(0);
+				gtype(0);
 				}
 				break;
 			case 12:
@@ -702,42 +702,42 @@ public class glacierParser extends Parser {
 		return _localctx;
 	}
 
-	public static class TypeContext extends ParserRuleContext {
-		public BaseTypeContext baseType() {
-			return getRuleContext(BaseTypeContext.class,0);
+	public static class GtypeContext extends ParserRuleContext {
+		public BasegtypeContext basegtype() {
+			return getRuleContext(BasegtypeContext.class,0);
 		}
 		public ShapeContext shape() {
 			return getRuleContext(ShapeContext.class,0);
 		}
-		public List<TypeContext> type() {
-			return getRuleContexts(TypeContext.class);
+		public List<GtypeContext> gtype() {
+			return getRuleContexts(GtypeContext.class);
 		}
-		public TypeContext type(int i) {
-			return getRuleContext(TypeContext.class,i);
+		public GtypeContext gtype(int i) {
+			return getRuleContext(GtypeContext.class,i);
 		}
-		public TypeIdContext typeId() {
-			return getRuleContext(TypeIdContext.class,0);
+		public GtypeIdContext gtypeId() {
+			return getRuleContext(GtypeIdContext.class,0);
 		}
 		public KindContext kind() {
 			return getRuleContext(KindContext.class,0);
 		}
-		public TypeContext(ParserRuleContext parent, int invokingState) {
+		public GtypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_type; }
+		@Override public int getRuleIndex() { return RULE_gtype; }
 	}
 
-	public final TypeContext type() throws RecognitionException {
-		return type(0);
+	public final GtypeContext gtype() throws RecognitionException {
+		return gtype(0);
 	}
 
-	private TypeContext type(int _p) throws RecognitionException {
+	private GtypeContext gtype(int _p) throws RecognitionException {
 		ParserRuleContext _parentctx = _ctx;
 		int _parentState = getState();
-		TypeContext _localctx = new TypeContext(_ctx, _parentState);
-		TypeContext _prevctx = _localctx;
+		GtypeContext _localctx = new GtypeContext(_ctx, _parentState);
+		GtypeContext _prevctx = _localctx;
 		int _startState = 12;
-		enterRecursionRule(_localctx, 12, RULE_type, _p);
+		enterRecursionRule(_localctx, 12, RULE_gtype, _p);
 		int _la;
 		try {
 			int _alt;
@@ -752,7 +752,7 @@ public class glacierParser extends Parser {
 			case T__40:
 				{
 				setState(155);
-				baseType();
+				basegtype();
 				}
 				break;
 			case T__41:
@@ -768,11 +768,11 @@ public class glacierParser extends Parser {
 				setState(158);
 				match(T__3);
 				setState(159);
-				type(0);
+				gtype(0);
 				setState(160);
 				match(T__10);
 				setState(161);
-				type(0);
+				gtype(0);
 				setState(162);
 				match(T__4);
 				}
@@ -780,7 +780,7 @@ public class glacierParser extends Parser {
 			case Nondigit:
 				{
 				setState(164);
-				typeId();
+				gtypeId();
 				}
 				break;
 			case T__35:
@@ -790,7 +790,7 @@ public class glacierParser extends Parser {
 				setState(166);
 				match(T__3);
 				setState(167);
-				typeId();
+				gtypeId();
 				setState(168);
 				match(T__1);
 				setState(169);
@@ -800,7 +800,7 @@ public class glacierParser extends Parser {
 				setState(171);
 				match(T__10);
 				setState(172);
-				type(3);
+				gtype(3);
 				}
 				break;
 			case T__36:
@@ -810,7 +810,7 @@ public class glacierParser extends Parser {
 				setState(175);
 				match(T__3);
 				setState(176);
-				type(0);
+				gtype(0);
 				setState(177);
 				match(T__4);
 				}
@@ -825,7 +825,7 @@ public class glacierParser extends Parser {
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__34) | (1L << T__35) | (1L << T__36) | (1L << T__37) | (1L << T__38) | (1L << T__39) | (1L << T__40) | (1L << T__41) | (1L << Nondigit))) != 0)) {
 					{
 					setState(180);
-					type(0);
+					gtype(0);
 					setState(185);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
@@ -835,7 +835,7 @@ public class glacierParser extends Parser {
 						setState(181);
 						match(T__10);
 						setState(182);
-						type(0);
+						gtype(0);
 						}
 						}
 						setState(187);
@@ -862,14 +862,14 @@ public class glacierParser extends Parser {
 					_prevctx = _localctx;
 					{
 					{
-					_localctx = new TypeContext(_parentctx, _parentState);
-					pushNewRecursionContext(_localctx, _startState, RULE_type);
+					_localctx = new GtypeContext(_parentctx, _parentState);
+					pushNewRecursionContext(_localctx, _startState, RULE_gtype);
 					setState(193);
 					if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 					setState(194);
 					match(T__5);
 					setState(195);
-					type(6);
+					gtype(6);
 					}
 					} 
 				}
@@ -890,17 +890,17 @@ public class glacierParser extends Parser {
 		return _localctx;
 	}
 
-	public static class BaseTypeContext extends ParserRuleContext {
+	public static class BasegtypeContext extends ParserRuleContext {
 		public TerminalNode Number() { return getToken(glacierParser.Number, 0); }
-		public BaseTypeContext(ParserRuleContext parent, int invokingState) {
+		public BasegtypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_baseType; }
+		@Override public int getRuleIndex() { return RULE_basegtype; }
 	}
 
-	public final BaseTypeContext baseType() throws RecognitionException {
-		BaseTypeContext _localctx = new BaseTypeContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_baseType);
+	public final BasegtypeContext basegtype() throws RecognitionException {
+		BasegtypeContext _localctx = new BasegtypeContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_basegtype);
 		try {
 			setState(214);
 			_errHandler.sync(this);
@@ -1128,17 +1128,17 @@ public class glacierParser extends Parser {
 		return _localctx;
 	}
 
-	public static class TypeIdContext extends ParserRuleContext {
+	public static class GtypeIdContext extends ParserRuleContext {
 		public TerminalNode Nondigit() { return getToken(glacierParser.Nondigit, 0); }
-		public TypeIdContext(ParserRuleContext parent, int invokingState) {
+		public GtypeIdContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_typeId; }
+		@Override public int getRuleIndex() { return RULE_gtypeId; }
 	}
 
-	public final TypeIdContext typeId() throws RecognitionException {
-		TypeIdContext _localctx = new TypeIdContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_typeId);
+	public final GtypeIdContext gtypeId() throws RecognitionException {
+		GtypeIdContext _localctx = new GtypeIdContext(_ctx, getState());
+		enterRule(_localctx, 24, RULE_gtypeId);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -1218,7 +1218,7 @@ public class glacierParser extends Parser {
 		case 3:
 			return expr_sempred((ExprContext)_localctx, predIndex);
 		case 6:
-			return type_sempred((TypeContext)_localctx, predIndex);
+			return gtype_sempred((GtypeContext)_localctx, predIndex);
 		}
 		return true;
 	}
@@ -1235,7 +1235,7 @@ public class glacierParser extends Parser {
 		}
 		return true;
 	}
-	private boolean type_sempred(TypeContext _localctx, int predIndex) {
+	private boolean gtype_sempred(GtypeContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 4:
 			return precpred(_ctx, 5);

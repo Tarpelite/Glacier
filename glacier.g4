@@ -8,11 +8,11 @@ item
 WS : [ \t\r\n;]+ -> skip ;
 
 operator
-    : 'operator' globalId ':' type
+    : 'operator' globalId ':' gtype
     ;
 
 definition
-    : 'def' globalId ( '(' localId ':' type ')' )* '->' type '{' expr '}'
+    : 'def' globalId ( '(' localId ':' gtype ')' )* '->' gtype '{' expr '}'
     ;
 
 expr
@@ -21,15 +21,15 @@ expr
     | 'True'
     | 'False'
     | expr '(' (expr (',' expr)*)? ')'
-    | 'let' localId (':' type )?'=' expr ('in' expr)?
-    | '(' type ')' expr
+    | 'let' localId (':' gtype )?'=' expr ('in' expr)?
+    | '(' gtype ')' expr
     | expr binOp expr
     | unaryOp expr
     | '(' (expr (',' expr)*)?')'
     | expr '[' Number ']'
     | '[' expr ( ',' expr)* ']'
     | 'if' expr 'then' expr 'else' expr
-    | 'Zero' type
+    | 'Zero' gtype
     | 'Grad' expr
     | 'Ref' expr
     | '!' expr
@@ -54,18 +54,18 @@ unaryOp
     | 'sq'
     ;
 
-type
-    :  baseType
+gtype
+    :  basegtype
     |  shape
-    | 'Tensor' '(' type ',' type ')'
-    |  type '->' type
-    |  typeId
-    |  'forall' '(' typeId ':' kind ')' ',' type
-    |  'refType' '(' type ')' 
-    |  '(' (type (',' type )*)? ')'
+    | 'Tensor' '(' gtype ',' gtype ')'
+    |  gtype '->' gtype
+    |  gtypeId
+    |  'forall' '(' gtypeId ':' kind ')' ',' gtype
+    |  'refgtype' '(' gtype ')' 
+    |  '(' (gtype (',' gtype )*)? ')'
     ;
 
-baseType
+basegtype
     : 'IntType'  '(' Number ')'
     | 'UIntType' '(' Number ')'
     | 'FloatType' '(' Number ')'
@@ -124,7 +124,7 @@ localId
     : '%' Identifier
     ;
 
-typeId
+gtypeId
     : Nondigit
     ;
 
