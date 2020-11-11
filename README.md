@@ -1,2 +1,4 @@
 # Glacier
-A pure differentiable functional programming language with 
+
+Glacier is a pure differentiable , functional programming language designed for speeding up your deeplearning research.
+

@@ -1,0 +1,13 @@
+def @zip<a, b>(%l : List[a], %m : List[b]) -> List[(a, b)] {
+  match(%l) {
+    case Nil() { Nil() }
+    case Cons(%a, %t1) {
+      match(%m) {
+        case Nil() { Nil() }
+        case Cons(%b, %t2) { Cons((%a, %b), @zip(%t1, %t2)) }
+      }
+    }
+  }
+}
+
+
