@@ -1,7 +1,7 @@
 {-# LANGUAGE DataKinds, PolyKinds, TypeOperators, TypeFamilies
              , TypeApplications #-}
 
-module DumpTypecheckedAst where {
+module DumpTypecheckedAst where 
 import Data.Kind
 
 data Peano = Zero | Succ Peano

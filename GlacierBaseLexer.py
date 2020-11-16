@@ -211,7 +211,7 @@ class GlacierBaseLexer(Lexer):
         if len(self.indentStack) == 0:
             return self.startIndent
         else:
-            self.indentStack[-1][1]
+            return self.indentStack[-1][1]
     
     def createToken(self,type_s, text, next_s):
         token = CommonToken(type=type_s)
@@ -270,6 +270,9 @@ class GlacierBaseLexer(Lexer):
         if type_s == GLX.OpenPragmaBracket:
             self.inPragmas =  True
         if self.startIndent == -1 and type_s not in [GLX.NEWLINE, GLX.WS, GLX.TAB, GLX.OCURLY]:
+            if type_s == GLX.MODULE:
+                self.moduleStartIndent = True
+                self.wasModuleExport = True
             if type_s != GLX.MODULE and not self.moduleStartIndent and not self.inPragmas:
                 self.startIndent = next_s.column 
             elif self.lastKeyWord == "where" and self.moduleStartIndent:
@@ -325,7 +328,8 @@ class GlacierBaseLexer(Lexer):
             # Translate to 292
 
             while self.indentCount < self.getSavedIndent():
-                if len(self.indentStack) != 0 and self.nestedLevel > 0:
+                # print(self.getSavedIndent())
+                if len(self.indentStack) > 0 and self.nestedLevel > 0:
                     self.indentStack = self.indentStack[:-1] # pop
                     self.nestedLevel -= 1
                 
@@ -359,7 +363,7 @@ class GlacierBaseLexer(Lexer):
             self.nestedLevel += 1
             self.prevWasKeyWord =  True
             self.prevWasEndl = False
-            self.lastKeyWord = next_s.text() 
+            self.lastKeyWord = next_s.text
 
             if type_s == GLX.WHERE:
                 if len(self.indentStack) != 0 and self.indentStack[-1][1] in ["do", "mdo"]:

@@ -9,6 +9,7 @@ def main(argv):
     stream = CommonTokenStream(lexer)
     parser = GlacierParser(stream)
     tree = parser.module()
+    print(type(tree))
     print(tree.toStringTree())
  
 if __name__ == '__main__':
