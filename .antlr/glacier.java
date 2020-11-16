@@ -1,4 +1,4 @@
-// Generated from /mnt/d/workspace/2020_fall/PL/Glacier/GlacierLexer.g4 by ANTLR 4.8
+// Generated from /mnt/d/workspace/2020_fall/PL/Glacier/glacier.g4 by ANTLR 4.8
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class GlacierLexer extends GlacierBaseLexer {
+public class glacier extends GlacierBaseLexer {
 	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -160,13 +160,13 @@ public class GlacierLexer extends GlacierBaseLexer {
 	}
 
 
-	public GlacierLexer(CharStream input) {
+	public glacier(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "GlacierLexer.g4"; }
+	public String getGrammarFileName() { return "glacier.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -210,7 +210,7 @@ public class GlacierLexer extends GlacierBaseLexer {
 		switch (actionIndex) {
 		case 0:
 
-			    self.processNEWLINEToken();
+			    this.processNEWLINEToken();
 
 			break;
 		}
@@ -219,7 +219,7 @@ public class GlacierLexer extends GlacierBaseLexer {
 		switch (actionIndex) {
 		case 1:
 
-			    self.processTABToken();
+			    this.processTABToken();
 
 			break;
 		}
@@ -228,7 +228,7 @@ public class GlacierLexer extends GlacierBaseLexer {
 		switch (actionIndex) {
 		case 2:
 
-			    self.processWSToken();
+			    this.processWSToken();
 
 			break;
 		}
