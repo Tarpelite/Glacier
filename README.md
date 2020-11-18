@@ -1,2 +1,4 @@
 # Glacier
-A pure differentiable functional programming language with 
+A pure differentiable functional programming language 
+
+Polish up your deeplearning research by thinking like a river.
