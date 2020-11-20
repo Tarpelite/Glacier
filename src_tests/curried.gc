@@ -1,0 +1,30 @@
+// An example of Glacier including feature of functional Programming
+
+// All computation is performed by using pure functions. A function takes a parameter and produces a result. There is no notion of a side effect.
+
+// Programs are declarative. They consist of a collection of facts.
+
+// Functions are considered values, just like other values, you can pass a function to another function, recevie a function as the result of a function, etc.
+
+// 1. Curried Func
+
+
+def AttentionWeightSum :: Weight:Tensor(2, 2) -> Input: Tensor(2, 2) -> res: Bool
+{
+    res := Weight*Input
+}
+
+
+let w: Tensor(2,2) = [
+    [1,2],
+    [3,4]
+] 
+
+let x: Tensor(2, 2) = [
+    [4, 3],
+    [2, 1]
+]
+
+Judge = AttentionWeightSum(w)
+
+Judge(x)

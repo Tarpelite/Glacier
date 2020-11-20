@@ -1,0 +1,28 @@
+// An example of Glacier including feature of functional Programming
+
+// 3. lambda
+
+// lambda is equivalent to instant number in the world of function Programming
+
+// The most magic intepretation of Lambda in NN world is a schedule of cell
+
+// Another insanely simple implementation of RNN in Glacier
+
+let state: Shape(3,3) = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+
+let x: Shape(3,1) = [
+    [1,2,3]
+]
+
+// encoding RNN, return a final state produced by a series 
+
+\(state,x) -> foldl (state, replicate(x,5))
+ 
+ //decoding RNN, using the state to generate a list 
+
+ \(state, x) -> unfoldr(state, replicate(x,5))
+

@@ -26,7 +26,13 @@ expr: name
     | 'Ref' expr
     | '!' expr
     | expr ':=' expr
+    |'\\' expr '->' expr
+    | 'unfoldr' expr 
+    | 'replicate' expr
+    | 'foldl' expr
     ;
+
+
 
 binOp: '+'
     | '-'
@@ -38,6 +44,8 @@ binOp: '+'
     |'<='
     |'>='
     |'>'
+    |'map'
+
     ;
 
 unaryOp: '-'
