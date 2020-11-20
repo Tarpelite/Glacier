@@ -1,89 +1,78 @@
 grammar Glacier;
 
-/* Skips */
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+WS: [ \t\r\n]+ -> skip;
+COMMENT: '//' .*? '\n' -> skip;
+program: (func|expr)*;
 
-/* programs */
-
-program: form*;
-
-form : definition | expr;
-
-/* Definitions */
-
-definition: var_def
-        | syntax_def
-        | '(' 'begin'  definition* ')'
-        | '(' 'let' '(' syntax_binding* ')' definition* ')'
-        | '(' 'letrec' '(' syntax_binding* ')' definition* ')' 
-        ;
-var_def: '(' 'define' var expr ')'
-        | '(' 'define' '(' var var* ')' body ')'
-        | '(' 'define' '(' var var* '.' var ')' body ')'
-        ;
-
-var : idG;
-body: definition* expr+;
-syntax_def: '(' 'define-syntax' keyword expr ')';
-keyword: idG;
-syntax_binding: '(' keyword expr ')';
-
-/* Expressions */
-
-expr: cons
-    | var
-    | '(' 'quote' datum ')' | '\'' datum
-    | '(' 'lambda' formals body ')'
-    | '(' 'if' expr ' '+ expr ' '+ expr')' | '(' 'if' ' '+ expr ' '+ expr ')'
-    | '(' 'set' '!' var expr ')'
-    | application
-    | '(' 'let' '(' syntax_binding* ')' expr+ ')'
-    | '(' 'letrec' '(' syntax_binding* ')' expr+ ')'
-    ;
-cons: booleanG | number | character | string;
-formals: var | '(' var* ')' | '('var+ '.' var')';
-application: '(' expr (' '+ expr)* ')';
-
-/* idGentifiers */
-idG: initial subsequent*|'+'|'-'|'...';
-initial: LETTER | '!' | '$' | '&' | '*' | '/' | ':' | '<' | '='| '>' | '?' | '~' | '_' | '^';
-subsequent: initial | DIGIT | '.' | '+' | '-';
-LETTER : [a-z];
-DIGIT: [0-9];
-
-/* Data */
-datum: booleanG | number | character | string | symbol | listG | vector;
-booleanG: '#t' | '#f';
-number:  '@'(real | real '@' real
-        | real '+' imag | real '-' imag
-        | '+' imag | '-' imag) ;
-character: '#' any_character ;
-string: '"' any_character* '"';
-symbol: idG ;
-listG: '(' datum* ')' | '(' datum+ '.' datum ')' | abbr;
-abbr: '\'' datum | '`' datum | ',' datum | ',@' datum;
-vector: '#' '(' datum* ')';
+func: 'def' name  '::' params*  '{' expr? '}';
 
 
-/* Numbers */
-imag: 'i' | ureal 'i';
-real:  sign? ureal;
-ureal: uinteger | decimal;
-uinteger: DIGIT+ '#'*;
-
-decimal: uinteger exponent
-    | '.' DIGIT+ '#'* suffix?
-    | DIGIT+ '.' DIGIT* '#' suffix?
-    | DIGIT+ '#' + '.' '#' suffix?
+expr: name
+    | INT
+    | FLOAT
+    | 'True'
+    | 'False'
+    | expr '(' (expr (',' expr)*)? ')'
+    | 'let' name ':' typeG '=' expr ('in' expr)?
+    | '(' typeG ')' expr
+    | expr binOp expr
+    | unaryOp expr
+    | '(' (expr (',' expr)*)? ')'
+    | expr '[' INT ']'
+    |'[' expr (',' expr)* ']'
+    | 'if' expr 'then' expr 'else' expr
+    | 'Zero' expr
+    | 'Grad' expr
+    | 'Ref' expr
+    | '!' expr
+    | expr ':=' expr
     ;
 
-suffix: exponent;
-exponent: exponent_marker sign? DIGIT+;
-exponent_marker: 'e' | 's' | 'f' | 'd' | 'l';
-sign: '+' | '-';
+binOp: '+'
+    | '-'
+    | '*'
+    |'/'
+    |'!='
+    |'='
+    |'<'
+    |'<='
+    |'>='
+    |'>'
+    ;
 
-any_character: decimal | LETTER | LARGE
-            | DIGIT | ',' | ';' | '(' | ')'
-              | '[' | ']' | '`' | '"';
+unaryOp: '-'
+    |'fold'
+    |'unfold'
+    |'map'
+    |'tail'
+    |'filter'
+    ;
 
-LARGE: [A-Z];
+name: VAR;
+
+params: name ':' typeG ('->' name ':' typeG)*;
+
+typeG: basetypeG
+| shape
+| 'Tensor' '(' INT (',' INT)* ')'
+| typeG '->' typeG
+| '(' (typeG ('->' typeG)*)? ')'
+;
+
+basetypeG: 'Int' '(' INT ')'
+    | 'UInt' '(' INT ')'
+    | 'Float' '(' INT ')'
+    | 'Bool'
+    ;
+
+shape: 
+    'Shape' '(' (INT (','INT)*)? ')';
+
+VAR: [a-zA-Z]+;
+
+INT: ('0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9')+;
+
+SPACESL: ' '+;
+FLOAT: INT '.' INT;
+
+args: (SPACESL VAR|INT)+ ;

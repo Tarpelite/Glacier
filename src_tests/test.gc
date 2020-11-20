@@ -1,1 +1,46 @@
-(append (a b c) (1 2 3 4))
+
+// An example of Glacier including feature of functional Programming
+
+// 1. Curried Func
+
+def AttentionWeightSum :: Weight:Tensor(2, 2) -> Input: Tensor(2, 2) -> res: Bool
+{
+    res := Weight*Input
+}
+
+
+let w: Tensor(2,2) = [
+    [1,2],
+    [3,4]
+] 
+
+let x: Tensor(2, 2) = [
+    [4, 3],
+    [2, 1]
+]
+
+Judge = AttentionWeightSum(w)
+
+Judge(x)
+
+// 2. High-ordersim in order
+
+// FeedForward Net in Transformer
+
+def FFN :: Weight: Tensor(2, 2)  -> Input: Tensor(2, 2) -> Output: Tensor(2, 2)
+{
+    Output := Weight * Input + Bias
+}
+
+
+def FFNBox :: a: Tensor(2,2) -> b: Tensor(2,2) -> c: Tensor(2,2) -> d: Tensor(2,2) -> Output: Tensor(2,2)
+{}
+
+FFNBox := FFN(FFN, x)
+
+// FFNBox(weight, x) == FFN(FFN(weight, x))
+
+
+
+
+
