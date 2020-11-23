@@ -4,8 +4,9 @@ WS: [ \t\r\n]+ -> skip;
 COMMENT: '//' .*? '\n' -> skip;
 program: (func|expr)*;
 
-func: 'def' name  '::' params*  '{' expr? '}';
+func: 'def' name  typeConstraint? '=>' params*  '{' expr? '}';
 
+typeConstraint: '(' typeG name (',' name)* ')';
 
 expr: name
     | INT
@@ -58,7 +59,13 @@ unaryOp: '-'
 
 name: VAR;
 
-params: name ':' typeG ('->' name ':' typeG)*;
+param: listG | tupleG | VAR;
+
+listG: '[' expr (',' expr)* ']';
+
+tupleG: '(' expr (',' expr)* ')';
+
+params: param ('->' param )*;
 
 typeG: basetypeG
 | shape
@@ -67,9 +74,9 @@ typeG: basetypeG
 | '(' (typeG ('->' typeG)*)? ')'
 ;
 
-basetypeG: 'Int' '(' INT ')'
-    | 'UInt' '(' INT ')'
-    | 'Float' '(' INT ')'
+basetypeG: 'Int' 
+    | 'UInt' 
+    | 'Float' 
     | 'Bool'
     ;
 
