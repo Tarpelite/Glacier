@@ -4,7 +4,7 @@ WS: [ \t\r\n]+ -> skip;
 COMMENT: '//' .*? '\n' -> skip;
 program: (func|expr)*;
 
-func: 'def' name  typeConstraint? '=>' params*  '{' expr? '}';
+func: 'def' name  '::' typeConstraint? '=>' params*  '{' expr? '}';
 
 typeConstraint: '(' typeG name (',' name)* ')';
 
