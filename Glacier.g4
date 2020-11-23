@@ -6,7 +6,8 @@ program: (func|expr)*;
 
 func: 'def' name  '::' typeConstraint? '=>' params*  '{' expr? '}';
 
-typeConstraint: '(' typeG name (',' name)* ')';
+
+typeConstraint: '(' typeG name (',' typeG name)* ')';
 
 expr: name
     | INT
@@ -72,6 +73,7 @@ typeG: basetypeG
 | 'Tensor' '(' INT (',' INT)* ')'
 | typeG '->' typeG
 | '(' (typeG ('->' typeG)*)? ')'
+| '['typeG (',' typeG)? ']'
 ;
 
 basetypeG: 'Int' 
