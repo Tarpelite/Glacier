@@ -1,14 +1,14 @@
-def Linear :: => Weight: Tensor(Float, (2, 2)) -> Bias: Tensor(Float,(2,2))  -> Input: Tensor(Float, (2, 2)) -> Output: Tensor(Float, (2, 2))
+def Linear :: Weight: Tensor(Float, (2, 2)) -> Bias: Tensor(Float,(2,2))  -> Input: Tensor(Float, (2, 2)) -> Output: Tensor(Float, (2, 2))
 {
     Output := Weight * Input + Bias
 }
 
-def Linear2 :: => Weight: Tensor(Float, (2, 2)) -> Bias: Tensor(Float,(2,2)) -> Input: Tensor(Float) -> Output: Tensor(Float, (2, 2))
+def Linear2 :: Weight: Tensor(Float, (2, 2)) -> Bias: Tensor(Float,(2,2)) -> Input: Tensor(Float) -> Output: Tensor(Float, (2, 2))
 {
     Output := Weight * Input + Bias
 }
 
-def Relu :: => Weight: [Tensor(Float, (2, 2)), Tensor(Float, (2, 2))] -> Bias: [Tensor(Float, (2, 2)), Tensor(Float, (2, 2))] -> State: Tensor(Float, (2, 2)) -> Input: Tensor(Float) -> Output: Tensor(Float, (2, 2))
+def Relu ::  Weight: [Tensor(Float, (2, 2)), Tensor(Float, (2, 2))] -> Bias: [Tensor(Float, (2, 2)), Tensor(Float, (2, 2))] -> State: Tensor(Float, (2, 2)) -> Input: Tensor(Float) -> Output: Tensor(Float, (2, 2))
 {
     let x = Linear(Input, Weight[0], Bias[0])
     let s = Linear(State, Weight[1], Bias[1])
@@ -16,12 +16,12 @@ def Relu :: => Weight: [Tensor(Float, (2, 2)), Tensor(Float, (2, 2))] -> Bias: [
 }
 
 
-def trained_cell :: => Weight:[Tensor(Float, (2, 2)), Tensor(Float, (2, 2))] -> Bias: [Tensor(Float, (2, 2)), Tensor(Float, (2, 2))] {
+def trained_cell :: Weight:[Tensor(Float, (2, 2)), Tensor(Float, (2, 2))] -> Bias: [Tensor(Float, (2, 2)), Tensor(Float, (2, 2))] {
     def fn:: State: Tensor(Float, (2, 2)) -> Input: Tensor(Float) {
         Relu(Weight, Bias, State, Input)
     }
 }
 
-def Encode:: (input_type, state_type) => Cell -> Input : List[input_type] -> Initial : state_type -> FinalState : state_type {
-    foldl(def fn::State->In { Cell(State, In)[0]}, Initial, Input)
+def Encode:: (input_type, state_type) => Cell : Func -> Input : List[input_type] -> Initial : state_type -> FinalState : state_type {
+    foldl(def fn:: State ->In { Cell(State, In)[0]}, Initial, Input)
 }

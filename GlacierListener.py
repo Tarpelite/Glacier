@@ -26,12 +26,39 @@ class GlacierListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by GlacierParser#typeConstraint.
+    def enterTypeConstraint(self, ctx:GlacierParser.TypeConstraintContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#typeConstraint.
+    def exitTypeConstraint(self, ctx:GlacierParser.TypeConstraintContext):
+        pass
+
+
     # Enter a parse tree produced by GlacierParser#expr.
     def enterExpr(self, ctx:GlacierParser.ExprContext):
         pass
 
     # Exit a parse tree produced by GlacierParser#expr.
     def exitExpr(self, ctx:GlacierParser.ExprContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#basicOp.
+    def enterBasicOp(self, ctx:GlacierParser.BasicOpContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#basicOp.
+    def exitBasicOp(self, ctx:GlacierParser.BasicOpContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#basicFn.
+    def enterBasicFn(self, ctx:GlacierParser.BasicFnContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#basicFn.
+    def exitBasicFn(self, ctx:GlacierParser.BasicFnContext):
         pass
 
 
@@ -62,6 +89,33 @@ class GlacierListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by GlacierParser#param.
+    def enterParam(self, ctx:GlacierParser.ParamContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#param.
+    def exitParam(self, ctx:GlacierParser.ParamContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#listG.
+    def enterListG(self, ctx:GlacierParser.ListGContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#listG.
+    def exitListG(self, ctx:GlacierParser.ListGContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#tupleG.
+    def enterTupleG(self, ctx:GlacierParser.TupleGContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#tupleG.
+    def exitTupleG(self, ctx:GlacierParser.TupleGContext):
+        pass
+
+
     # Enter a parse tree produced by GlacierParser#params.
     def enterParams(self, ctx:GlacierParser.ParamsContext):
         pass
@@ -77,6 +131,15 @@ class GlacierListener(ParseTreeListener):
 
     # Exit a parse tree produced by GlacierParser#typeG.
     def exitTypeG(self, ctx:GlacierParser.TypeGContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#customType.
+    def enterCustomType(self, ctx:GlacierParser.CustomTypeContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#customType.
+    def exitCustomType(self, ctx:GlacierParser.CustomTypeContext):
         pass
 
 

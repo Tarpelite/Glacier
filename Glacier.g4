@@ -4,10 +4,10 @@ WS: [ \t\r\n]+ -> skip;
 COMMENT: '//' .*? '\n' -> skip;
 program: (func|expr)*;
 
-func: 'def' name  '::' typeConstraint? '=>' params*  '{' expr? '}';
+func: 'def' name  '::' (typeConstraint '=>')? params*  '{' (expr| func)* '}';
 
 
-typeConstraint: '(' typeG name (',' typeG name)* ')';
+typeConstraint: '(' name (',' name)* ')';
 
 expr: name
     | INT
@@ -15,7 +15,7 @@ expr: name
     | 'True'
     | 'False'
     | expr '(' (expr (',' expr)*)? ')'
-    | 'let' name ':' typeG '=' expr ('in' expr)?
+    | 'let' name (':' typeG)? '=' expr ('in' expr)?
     | '(' typeG ')' expr
     | expr binOp expr
     | unaryOp expr
@@ -31,10 +31,16 @@ expr: name
     |'\\' expr '->' expr
     | 'unfoldr' expr 
     | 'replicate' expr
-    | 'foldl' expr
+    | 'foldl' '(' func | expr ',' expr ',' expr ')'
+    | basicOp expr
     ;
 
 
+basicOp: '@' basicFn;
+
+basicFn:
+    'relu'
+    | 'softmax';
 
 binOp: '+'
     | '-'
@@ -47,7 +53,6 @@ binOp: '+'
     |'>='
     |'>'
     |'map'
-
     ;
 
 unaryOp: '-'
@@ -60,7 +65,7 @@ unaryOp: '-'
 
 name: VAR;
 
-param: listG | tupleG | VAR;
+param: (listG | tupleG | VAR) (':' typeG)?;
 
 listG: '[' expr (',' expr)* ']';
 
@@ -70,22 +75,30 @@ params: param ('->' param )*;
 
 typeG: basetypeG
 | shape
-| 'Tensor' '(' INT (',' INT)* ')'
+| 'Tensor' '(' basetypeG  (',' '(' INT (',' INT)* ')' )* ')'
 | typeG '->' typeG
 | '(' (typeG ('->' typeG)*)? ')'
 | '['typeG (',' typeG)? ']'
+| 'List' '[' name? ']'
+| customType
+
 ;
+
+customType:
+name;
 
 basetypeG: 'Int' 
     | 'UInt' 
     | 'Float' 
     | 'Bool'
+    | 'List'
+    | 'Func'
     ;
 
 shape: 
     'Shape' '(' (INT (','INT)*)? ')';
 
-VAR: [a-zA-Z]+;
+VAR: [a-zA-Z_] ([a-zA-Z_] | INT)*;
 
 INT: ('0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9')+;
 
