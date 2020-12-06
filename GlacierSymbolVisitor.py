@@ -1,16 +1,16 @@
-# Generated from Glacier.g4 by ANTLR 4.8
+from GlacierVisitor import GlacierVisitor
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .GlacierParser import GlacierParser
 else:
     from GlacierParser import GlacierParser
 
-# This class defines a complete generic visitor for a parse tree produced by GlacierParser.
+class GlacierSymbolVisitor(GlacierVisitor):
+    def __init__(self):
+        pass
 
-class GlacierVisitor(ParseTreeVisitor):
-
-    # Visit a parse tree produced by GlacierParser#program.
     def visitProgram(self, ctx:GlacierParser.ProgramContext):
+        # print(ctx)
         return self.visitChildren(ctx)
 
 
@@ -71,11 +71,14 @@ class GlacierVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by GlacierParser#params.
     def visitParams(self, ctx:GlacierParser.ParamsContext):
+        print(ctx.getText())
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by GlacierParser#typeG.
     def visitTypeG(self, ctx:GlacierParser.TypeGContext):
+        print(ctx.getText())
+        # import ipdb; ipdb.set_trace()
         return self.visitChildren(ctx)
 
 
@@ -99,5 +102,3 @@ class GlacierVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-
-del GlacierParser

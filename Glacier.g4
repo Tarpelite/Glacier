@@ -9,34 +9,32 @@ func: 'def' name  '::' (typeConstraint '=>')? params*  '{' (expr| func)* '}';
 
 typeConstraint: '(' name (',' name)* ')';
 
-expr: name
-    | INT
-    | FLOAT
-    | 'True'
-    | 'False'
-    | expr '(' (expr (',' expr)*)? ')'
-    | 'let' name (':' typeG)? '=' expr ('in' expr)?
-    | '(' typeG ')' expr
-    | expr binOp expr
-    | unaryOp expr
-    | '(' (expr (',' expr)*)? ')'
-    | expr '[' INT ']'
-    |'[' expr (',' expr)* ']'
-    | 'if' expr 'then' expr 'else' expr
-    | 'Zero' expr
-    | 'Grad' expr
-    | 'Ref' expr
-    | '!' expr
-    | expr ':=' expr
-    |'\\' expr '->' expr
-    | 'unfoldr' expr 
-    | 'replicate' expr
-    | 'foldl' '(' func | expr ',' expr ',' expr ')'
-    | basicOp expr
+expr: name                                              # EName
+    | INT                                               # EInt
+    | FLOAT                                             # EFloat
+    | BOOLEAN                                           # EBoolean
+    | expr '(' (expr (',' expr)*)? ')'                  # Call
+    | 'let' name (':' typeG)? '=' expr ('in' expr)?     # Let
+    | '(' typeG ')' expr                                # Convert
+    | expr binOp expr                                   # Bexpr
+    | unaryOp expr                                      # Uexpr
+    | '(' (expr (',' expr)*)? ')'                       # ETuple
+    | expr '[' INT ']'                                  # Subscript
+    |'[' expr (',' expr)* ']'                           # EList
+    | 'if' expr 'then' expr 'else' expr                 # Condition
+    | 'Zero' expr                                       # Zero
+    | 'Grad' expr                                       # Grad
+    | 'Ref' expr                                        # Ref
+    | expr ':=' expr                                    # Assignment
+    |'\\' expr '->' expr                                # Comment
+    | 'unfoldr' expr                                    # Unfold
+    | 'replicate' expr                                  # Replicate
+    | primitiveOp expr                                  # Primitive
+    | 'foldl' '(' (func | expr) ',' expr ',' expr ')'   # Fold
     ;
 
 
-basicOp: '@' basicFn;
+primitiveOp: '@' basicFn;
 
 basicFn:
     'relu'
@@ -61,6 +59,7 @@ unaryOp: '-'
     |'map'
     |'tail'
     |'filter'
+    | '!'
     ;
 
 name: VAR;
@@ -84,11 +83,10 @@ typeG: basetypeG
 
 ;
 
-customType:
-name;
+customType: name;
 
 basetypeG: 'Int' 
-    | 'UInt' 
+    | 'UInt'  
     | 'Float' 
     | 'Bool'
     | 'List'
@@ -104,5 +102,5 @@ INT: ('0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9')+;
 
 SPACESL: ' '+;
 FLOAT: INT '.' INT;
-
+BOOLEAN: 'True' | 'False' ;
 args: (SPACESL VAR|INT)+ ;

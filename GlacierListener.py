@@ -35,21 +35,210 @@ class GlacierListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by GlacierParser#expr.
-    def enterExpr(self, ctx:GlacierParser.ExprContext):
+    # Enter a parse tree produced by GlacierParser#Condition.
+    def enterCondition(self, ctx:GlacierParser.ConditionContext):
         pass
 
-    # Exit a parse tree produced by GlacierParser#expr.
-    def exitExpr(self, ctx:GlacierParser.ExprContext):
+    # Exit a parse tree produced by GlacierParser#Condition.
+    def exitCondition(self, ctx:GlacierParser.ConditionContext):
         pass
 
 
-    # Enter a parse tree produced by GlacierParser#basicOp.
-    def enterBasicOp(self, ctx:GlacierParser.BasicOpContext):
+    # Enter a parse tree produced by GlacierParser#Fold.
+    def enterFold(self, ctx:GlacierParser.FoldContext):
         pass
 
-    # Exit a parse tree produced by GlacierParser#basicOp.
-    def exitBasicOp(self, ctx:GlacierParser.BasicOpContext):
+    # Exit a parse tree produced by GlacierParser#Fold.
+    def exitFold(self, ctx:GlacierParser.FoldContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#EName.
+    def enterEName(self, ctx:GlacierParser.ENameContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#EName.
+    def exitEName(self, ctx:GlacierParser.ENameContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Comment.
+    def enterComment(self, ctx:GlacierParser.CommentContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Comment.
+    def exitComment(self, ctx:GlacierParser.CommentContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Call.
+    def enterCall(self, ctx:GlacierParser.CallContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Call.
+    def exitCall(self, ctx:GlacierParser.CallContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Zero.
+    def enterZero(self, ctx:GlacierParser.ZeroContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Zero.
+    def exitZero(self, ctx:GlacierParser.ZeroContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Convert.
+    def enterConvert(self, ctx:GlacierParser.ConvertContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Convert.
+    def exitConvert(self, ctx:GlacierParser.ConvertContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#EBoolean.
+    def enterEBoolean(self, ctx:GlacierParser.EBooleanContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#EBoolean.
+    def exitEBoolean(self, ctx:GlacierParser.EBooleanContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Bexpr.
+    def enterBexpr(self, ctx:GlacierParser.BexprContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Bexpr.
+    def exitBexpr(self, ctx:GlacierParser.BexprContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#EInt.
+    def enterEInt(self, ctx:GlacierParser.EIntContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#EInt.
+    def exitEInt(self, ctx:GlacierParser.EIntContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Subscript.
+    def enterSubscript(self, ctx:GlacierParser.SubscriptContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Subscript.
+    def exitSubscript(self, ctx:GlacierParser.SubscriptContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Grad.
+    def enterGrad(self, ctx:GlacierParser.GradContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Grad.
+    def exitGrad(self, ctx:GlacierParser.GradContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Unfold.
+    def enterUnfold(self, ctx:GlacierParser.UnfoldContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Unfold.
+    def exitUnfold(self, ctx:GlacierParser.UnfoldContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Assignment.
+    def enterAssignment(self, ctx:GlacierParser.AssignmentContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Assignment.
+    def exitAssignment(self, ctx:GlacierParser.AssignmentContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Ref.
+    def enterRef(self, ctx:GlacierParser.RefContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Ref.
+    def exitRef(self, ctx:GlacierParser.RefContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Primitive.
+    def enterPrimitive(self, ctx:GlacierParser.PrimitiveContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Primitive.
+    def exitPrimitive(self, ctx:GlacierParser.PrimitiveContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#EList.
+    def enterEList(self, ctx:GlacierParser.EListContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#EList.
+    def exitEList(self, ctx:GlacierParser.EListContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Replicate.
+    def enterReplicate(self, ctx:GlacierParser.ReplicateContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Replicate.
+    def exitReplicate(self, ctx:GlacierParser.ReplicateContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Uexpr.
+    def enterUexpr(self, ctx:GlacierParser.UexprContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Uexpr.
+    def exitUexpr(self, ctx:GlacierParser.UexprContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#ETuple.
+    def enterETuple(self, ctx:GlacierParser.ETupleContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#ETuple.
+    def exitETuple(self, ctx:GlacierParser.ETupleContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Let.
+    def enterLet(self, ctx:GlacierParser.LetContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Let.
+    def exitLet(self, ctx:GlacierParser.LetContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#EFloat.
+    def enterEFloat(self, ctx:GlacierParser.EFloatContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#EFloat.
+    def exitEFloat(self, ctx:GlacierParser.EFloatContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#primitiveOp.
+    def enterPrimitiveOp(self, ctx:GlacierParser.PrimitiveOpContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#primitiveOp.
+    def exitPrimitiveOp(self, ctx:GlacierParser.PrimitiveOpContext):
         pass
 
 
