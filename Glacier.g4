@@ -21,7 +21,7 @@ expr: name                                              # EName
     | '(' (expr (',' expr)*)? ')'                       # ETuple
     | expr '[' INT ']'                                  # Subscript
     |'[' expr (',' expr)* ']'                           # EList
-    | 'if' expr 'then' expr 'else' expr                 # Condition
+    | 'if' expr 'then' block 'else' block               # Condition
     | 'Zero' expr                                       # Zero
     | 'Grad' expr                                       # Grad
     | 'Ref' expr                                        # Ref
@@ -31,8 +31,12 @@ expr: name                                              # EName
     | 'replicate' expr                                  # Replicate
     | primitiveOp expr                                  # Primitive
     | 'foldl' '(' (func | expr) ',' expr ',' expr ')'   # Fold
+    | 'match' '(' expr ')' '{'caseBlock* '}';
     ;
 
+
+block: '{' (expr | func)* '}';
+caseBlock: 'case' '(' expr ')' block;
 
 primitiveOp: '@' basicFn;
 
