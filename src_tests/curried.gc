@@ -9,18 +9,18 @@
 // 1. Curried Func
 
 
-def AttentionWeightSum :: Weight:Tensor(2, 2) -> Input: Tensor(2, 2) -> res: Bool
+def AttentionWeightSum :: Weight:Tensor(Float, (2,2)) -> Input:Tensor(Float, (2,2)) -> res: Bool
 {
     res := Weight*Input
 }
 
 
-let w: Tensor(2,2) = [
+let w: Tensor(Float, (2,2)) = [
     [1,2],
     [3,4]
 ] 
 
-let x: Tensor(2, 2) = [
+let x: Tensor(Float, (2,2)) = [
     [4, 3],
     [2, 1]
 ]

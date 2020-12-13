@@ -34,7 +34,7 @@ class GlacierSymbolDef(GlacierListener):
         name = ctx.name().getText()
         # stype = ctx.params()[0].param()[-1].typeG().getText()
         function = FunctionSymbol(name, None, self.currentScope)
-        self.currentScope.define(function)
+        self.currentScope.define(function, is_arg=False)
         self.scopes[ctx] = function
         self.currentScope = function
         pass
@@ -65,5 +65,20 @@ class GlacierSymbolDef(GlacierListener):
         self.currentScope.define(var)
         pass
 
+
+    # Enter a parse tree produced by GlacierParser#Let.
+    def enterLet(self, ctx:GlacierParser.LetContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Let.
+    def exitLet(self, ctx:GlacierParser.LetContext):
+        # import ipdb; ipdb.set_trace()
+        name = ctx.name().getText()
+        stype = ctx.typeG().getText() if ctx.typeG() is not None else None
+        var = VariableSymbol(name, stype)
+        self.currentScope.define(var,is_arg=False)
+
+
     def get_rondom_name(self):
+        import ipdb; ipdb.set_trace()
         return 'r_' + names.get_last_name()

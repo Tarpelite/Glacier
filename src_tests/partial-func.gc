@@ -3,13 +3,13 @@
 
 // FeedForward Net in Transformer
 
-def FFN :: Weight: Tensor(2, 2)  -> Input: Tensor(2, 2) -> Output: Tensor(2, 2)
+def FFN :: Weight: Tensor(Float, (2,2))  -> Input: Tensor(Float, (2,2)) -> Output: Tensor(Float, (2,2))
 {
     Output := Weight * Input + Bias
 }
 
 
-def FFNBox :: a: Tensor(2,2) -> b: Tensor(2,2) -> c: Tensor(2,2) -> d: Tensor(2,2) -> Output: Tensor(2,2)
+def FFNBox :: a: Tensor(Float, (2,2)) -> b: Tensor(Float, (2,2)) -> c: Tensor(Float, (2,2)) -> d: Tensor(Float, (2,2)) -> Output: Tensor(Float, (2,2))
 {}
 
 FFNBox := FFN(FFN, x)

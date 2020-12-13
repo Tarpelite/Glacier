@@ -62,7 +62,7 @@ class BaseScope(Scope):
             return self.enclosingScope.resolve(name)
         return None
 
-    def define(self, sym: Symbol):
+    def define(self, sym: Symbol, **kargs):
         self.symbols[sym.name] = sym
 
     def getEnclosingScope(self):
@@ -103,9 +103,12 @@ class FunctionSymbol(Symbol, Scope):
             return self.enclosingScope.resolve(name)
         return None
 
-    def define(self, sym: Symbol):
-        self.arguments[sym.name] = sym
-        sym.scope = self
+    def define(self, sym: Symbol, is_arg=True):
+        if is_arg:
+            self.arguments[sym.name] = sym
+            sym.scope = self
+        else:
+            super().define(sym)
 
     def getEnclosingScope(self):
         return self.enclosingScope

@@ -62,15 +62,6 @@ class GlacierListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by GlacierParser#Comment.
-    def enterComment(self, ctx:GlacierParser.CommentContext):
-        pass
-
-    # Exit a parse tree produced by GlacierParser#Comment.
-    def exitComment(self, ctx:GlacierParser.CommentContext):
-        pass
-
-
     # Enter a parse tree produced by GlacierParser#Call.
     def enterCall(self, ctx:GlacierParser.CallContext):
         pass
@@ -140,6 +131,15 @@ class GlacierListener(ParseTreeListener):
 
     # Exit a parse tree produced by GlacierParser#Grad.
     def exitGrad(self, ctx:GlacierParser.GradContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Match.
+    def enterMatch(self, ctx:GlacierParser.MatchContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Match.
+    def exitMatch(self, ctx:GlacierParser.MatchContext):
         pass
 
 
@@ -230,6 +230,33 @@ class GlacierListener(ParseTreeListener):
 
     # Exit a parse tree produced by GlacierParser#EFloat.
     def exitEFloat(self, ctx:GlacierParser.EFloatContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#Lambda.
+    def enterLambda(self, ctx:GlacierParser.LambdaContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#Lambda.
+    def exitLambda(self, ctx:GlacierParser.LambdaContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#block.
+    def enterBlock(self, ctx:GlacierParser.BlockContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#block.
+    def exitBlock(self, ctx:GlacierParser.BlockContext):
+        pass
+
+
+    # Enter a parse tree produced by GlacierParser#caseBlock.
+    def enterCaseBlock(self, ctx:GlacierParser.CaseBlockContext):
+        pass
+
+    # Exit a parse tree produced by GlacierParser#caseBlock.
+    def exitCaseBlock(self, ctx:GlacierParser.CaseBlockContext):
         pass
 
 

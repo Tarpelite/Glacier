@@ -19,19 +19,19 @@ expr: name                                              # EName
     | expr binOp expr                                   # Bexpr
     | unaryOp expr                                      # Uexpr
     | '(' (expr (',' expr)*)? ')'                       # ETuple
-    | expr '[' INT ']'                                  # Subscript
+    | expr '[' expr ']'                                  # Subscript
     |'[' expr (',' expr)* ']'                           # EList
     | 'if' expr 'then' block 'else' block               # Condition
     | 'Zero' expr                                       # Zero
     | 'Grad' expr                                       # Grad
     | 'Ref' expr                                        # Ref
     | expr ':=' expr                                    # Assignment
-    |'\\' expr '->' expr                                # Comment
+    |'\\' expr '->' expr                                # Lambda
     | 'unfoldr' expr                                    # Unfold
     | 'replicate' expr                                  # Replicate
     | primitiveOp expr                                  # Primitive
-    | 'foldl' '(' (func | expr) ',' expr ',' expr ')'   # Fold
-    | 'match' '(' expr ')' '{'caseBlock* '}';
+    | 'foldl' '(' expr ',' expr ',' expr ')'   # Fold
+    | 'match' '(' expr ')' '{'caseBlock* '}'            # Match
     ;
 
 
@@ -48,6 +48,8 @@ binOp: '+'
     | '-'
     | '*'
     |'/'
+    |'%'
+    |'@'
     |'!='
     |'='
     |'<'
@@ -68,7 +70,7 @@ unaryOp: '-'
 
 name: VAR;
 
-param: (listG | tupleG | VAR) (':' typeG)?;
+param: VAR (':' typeG)?;
 
 listG: '[' expr (',' expr)* ']';
 
@@ -78,11 +80,11 @@ params: param ('->' param )*;
 
 typeG: basetypeG
 | shape
-| 'Tensor' '(' basetypeG  (',' '(' INT (',' INT)* ')' )* ')'
+| 'Tensor' '(' (basetypeG|customType)?  (',' '(' INT (',' INT)* ')' )* ')'
 | typeG '->' typeG
 | '(' (typeG ('->' typeG)*)? ')'
 | '['typeG (',' typeG)? ']'
-| 'List' '[' name? ']'
+| 'List' '[' typeG? ']'
 | customType
 
 ;

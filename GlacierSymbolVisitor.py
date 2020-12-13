@@ -9,8 +9,8 @@ class GlacierSymbolVisitor(GlacierVisitor):
     def __init__(self):
         pass
 
+    # Visit a parse tree produced by GlacierParser#program.
     def visitProgram(self, ctx:GlacierParser.ProgramContext):
-        # print(ctx)
         return self.visitChildren(ctx)
 
 
@@ -24,13 +24,133 @@ class GlacierSymbolVisitor(GlacierVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by GlacierParser#expr.
-    def visitExpr(self, ctx:GlacierParser.ExprContext):
+    # Visit a parse tree produced by GlacierParser#Condition.
+    def visitCondition(self, ctx:GlacierParser.ConditionContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by GlacierParser#basicOp.
-    def visitBasicOp(self, ctx:GlacierParser.BasicOpContext):
+    # Visit a parse tree produced by GlacierParser#Fold.
+    def visitFold(self, ctx:GlacierParser.FoldContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#EName.
+    def visitEName(self, ctx:GlacierParser.ENameContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Call.
+    def visitCall(self, ctx:GlacierParser.CallContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Zero.
+    def visitZero(self, ctx:GlacierParser.ZeroContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Convert.
+    def visitConvert(self, ctx:GlacierParser.ConvertContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#EBoolean.
+    def visitEBoolean(self, ctx:GlacierParser.EBooleanContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Bexpr.
+    def visitBexpr(self, ctx:GlacierParser.BexprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#EInt.
+    def visitEInt(self, ctx:GlacierParser.EIntContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Subscript.
+    def visitSubscript(self, ctx:GlacierParser.SubscriptContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Grad.
+    def visitGrad(self, ctx:GlacierParser.GradContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Match.
+    def visitMatch(self, ctx:GlacierParser.MatchContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Unfold.
+    def visitUnfold(self, ctx:GlacierParser.UnfoldContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Assignment.
+    def visitAssignment(self, ctx:GlacierParser.AssignmentContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Ref.
+    def visitRef(self, ctx:GlacierParser.RefContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Primitive.
+    def visitPrimitive(self, ctx:GlacierParser.PrimitiveContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#EList.
+    def visitEList(self, ctx:GlacierParser.EListContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Replicate.
+    def visitReplicate(self, ctx:GlacierParser.ReplicateContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Uexpr.
+    def visitUexpr(self, ctx:GlacierParser.UexprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#ETuple.
+    def visitETuple(self, ctx:GlacierParser.ETupleContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Let.
+    def visitLet(self, ctx:GlacierParser.LetContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#EFloat.
+    def visitEFloat(self, ctx:GlacierParser.EFloatContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#Lambda.
+    def visitLambda(self, ctx:GlacierParser.LambdaContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#block.
+    def visitBlock(self, ctx:GlacierParser.BlockContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#caseBlock.
+    def visitCaseBlock(self, ctx:GlacierParser.CaseBlockContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GlacierParser#primitiveOp.
+    def visitPrimitiveOp(self, ctx:GlacierParser.PrimitiveOpContext):
         return self.visitChildren(ctx)
 
 
@@ -71,14 +191,11 @@ class GlacierSymbolVisitor(GlacierVisitor):
 
     # Visit a parse tree produced by GlacierParser#params.
     def visitParams(self, ctx:GlacierParser.ParamsContext):
-        print(ctx.getText())
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by GlacierParser#typeG.
     def visitTypeG(self, ctx:GlacierParser.TypeGContext):
-        print(ctx.getText())
-        # import ipdb; ipdb.set_trace()
         return self.visitChildren(ctx)
 
 
@@ -100,5 +217,4 @@ class GlacierSymbolVisitor(GlacierVisitor):
     # Visit a parse tree produced by GlacierParser#args.
     def visitArgs(self, ctx:GlacierParser.ArgsContext):
         return self.visitChildren(ctx)
-
 

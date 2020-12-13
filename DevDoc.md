@@ -5,3 +5,8 @@
 - Params
 - Assignment
 - Let
+
+### Tricks in implement translator
+
+- expression tagging in function entering 
+- 
