@@ -1,7 +1,7 @@
 from inspect import signature
 from functools import partial
 
-def gpatial(func, *args, **kargs):
+def gpartial(func, *args, **kargs):
     sig = signature(func)
     num_args = len(sig.parameters)
     if len(args) + len(kargs) == num_args:
@@ -39,6 +39,6 @@ def unfoldr(func, state):
 if __name__ == "__main__":
     def add(a, b, c):
         return a+b+c
-    print(gpatial(add,1,2,3))
-    print(gpatial(gpatial(add,1),2))
-    print(gpatial(gpatial(gpatial(add,1),2),3))
+    print(gpartial(add,1,2,3))
+    print(gpartial(gpartial(add,1),2))
+    print(gpartial(gpartial(gpartial(add,1),2),3))
